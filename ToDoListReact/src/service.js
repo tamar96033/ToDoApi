@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = "http://localhost:5113/items"
+const apiUrl = "${process.env.REACT_APP_API_URL}/items"
 
 export default {
   getTasks: async () => {
