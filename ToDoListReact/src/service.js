@@ -32,9 +32,3 @@ export default {
 };
 
 
-
-CREATE TABLE Items (
-  ID INT AUTO_INCREMENT PRIMARY KEY,
-  Name VARCHAR(100),
-  Email VARCHAR(100),
-);
