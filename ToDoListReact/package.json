@@ -30,5 +30,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "process.env.REACT_APP_API_URL"
+  "proxy": "https://todoapiserver-7pc6.onrender.com"
 }
