@@ -4,8 +4,13 @@ const apiUrl = `${process.env.REACT_APP_API_URL}/items`
 
 export default {
   getTasks: async () => {
+    try{
     const result = await axios.get(`${apiUrl}`)    
-    return result.data;
+    return result.data;}
+    catch(error){
+      console.error(error.message);
+      
+    }
   },
 
   addTask: async(name)=>{
