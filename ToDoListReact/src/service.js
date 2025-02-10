@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = "${process.env.REACT_APP_API_URL}/items"
+const apiUrl = `${process.env.REACT_APP_API_URL}/items`
 
 export default {
   getTasks: async () => {
