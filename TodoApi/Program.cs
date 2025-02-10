@@ -32,6 +32,11 @@ app.UseCors();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+
+app.MapGet("/check",()=>{
+    return "you succed arrived here!!!";
+});
+
 // Define the API endpoints
 app.MapGet("/items", async (ToDoDbContext db) =>
 {
