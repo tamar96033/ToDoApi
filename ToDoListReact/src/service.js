@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-console.log(process.env);
-console.log(process.env.REACT_APP_API_URL)
-const apiUrl = process.env.REACT_APP_API_URL
-//const apiUrl = "https://todoapiserver-7pc6.onrender.com"
+//console.log(process.env);
+//console.log(process.env.REACT_APP_API_URL)
+//const apiUrl = process.env.REACT_APP_API_URL
+const apiUrl = "https://todoapiserver-7pc6.onrender.com"
 axios.defaults.baseURL = apiUrl; 
 console.log("API Base URL:", apiUrl);
 
@@ -27,9 +27,7 @@ const service = {
 
   setCompleted: async(id,name, isComplete)=>{
     console.log('setCompleted', {id,name, isComplete})
-    //TODO
     const result = await axios.put(`${apiUrl}/items/${id}`, {id, name, isComplete})
-    //return {}
     return {result};
   },
 
