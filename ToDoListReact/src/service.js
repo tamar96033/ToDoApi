@@ -47,7 +47,7 @@ console.log("API Base URL:", apiUrl);
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 
-// הוספת interceptor לשגיאות
+//הוספת interceptor לשגיאות
 axios.interceptors.response.use(
   response => response,
   error => {
