@@ -1,39 +1,99 @@
-import axios from 'axios';
+// import axios from 'axios';
 
-const apiUrl = process.env.REACT_APP_API_URL
+// const apiUrl = process.env.REACT_APP_API_URL
 
-const service = {
-  getTasks: async () => {
-    try{
-    const result = await axios.get(`${apiUrl}`)    
-    return result.data;}
-    catch(error){
-      console.error(error.message);
+// const service = {
+//   getTasks: async () => {
+//     try{
+//     const result = await axios.get(`${apiUrl}`)    
+//     return result.data;}
+//     catch(error){
+//       console.error(error.message);
       
-    }
-  },
+//     }
+//   },
 
-  addTask: async(name)=>{
-    console.log('addTask', name)
+//   addTask: async(name)=>{
+//     console.log('addTask', name)
     
-    const result = await axios.post(`${apiUrl}/`, {name})
-    return result;
-    //return {}
+//     const result = await axios.post(`${apiUrl}/`, {name})
+//     return result;
+//     //return {}
+//   },
+
+//   setCompleted: async(id,name, isComplete)=>{
+//     console.log('setCompleted', {id,name, isComplete})
+//     //TODO
+//     const result = await axios.put(`${apiUrl}/${id}`, {id, name, isComplete})
+//     //return {}
+//     return {result};
+//   },
+
+//   deleteTask:async(id)=>{
+//     console.log('deleteTask')
+//     const result = await axios.delete(`${apiUrl}/${id}`, {id})
+//     return result
+//   }
+// };
+
+// export default service
+
+
+
+import axios from 'axios';
+const apiUrl = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = apiUrl; 
+console.log("API Base URL:", apiUrl);
+axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+
+// הוספת interceptor לשגיאות
+axios.interceptors.response.use(
+  response => response,
+  error => {
+    console.error("API Request Error: ", error.response ? error.response.data : error.message);
+    return Promise.reject(error);
+  }
+);
+
+export default {
+  // get
+  getTasks: async () => {
+    const result = await axios.get(`/items`)    
+    return result.data;
   },
 
-  setCompleted: async(id,name, isComplete)=>{
-    console.log('setCompleted', {id,name, isComplete})
-    //TODO
-    const result = await axios.put(`${apiUrl}/${id}`, {id, name, isComplete})
-    //return {}
-    return {result};
+  // post
+  addTask: async (name) => {
+    console.log('addTask', name)  
+    const result = await axios.post('/items', { name: name, isComplete: false }); // יוצרת משימה חדשה עם שם לא פעיל
+    return result.data;
   },
 
-  deleteTask:async(id)=>{
+  // put
+// עדכון סטטוס ה-completion של משימה (ועדכון שם אם צריך)
+setCompleted: async (id, name, isComplete) => {
+  if (!id || name === undefined || isComplete === undefined) {
+    console.error("Missing parameters:", { id, name, isComplete });
+    return;
+  }
+
+  const todoToUpdate = {
+    name: name,      // שם המשימה
+    isComplete: isComplete, // סטטוס ההשלמה
+  };
+
+  try {
+    const result = await axios.put(`/items/${id}`, todoToUpdate);
+    return result.data;
+  } catch (error) {
+    console.error('Error updating todo:', error);
+    throw error;
+  }
+},  // delete
+  deleteTask: async (id) => {
     console.log('deleteTask')
-    const result = await axios.delete(`${apiUrl}/${id}`, {id})
-    return result
+    const result = await axios.delete(`/items/${id}`)
+    return result.data;
   }
 };
-
-export default service
