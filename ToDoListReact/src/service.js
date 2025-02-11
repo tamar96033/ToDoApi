@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const apiUrl = `${process.env.REACT_APP_API_URL}/items`
+const apiUrl = `${process.env.REACT_APP_API_URL}`
 
-const service= {
+const service = {
   getTasks: async () => {
     try{
     const result = await axios.get(`${apiUrl}`)    
