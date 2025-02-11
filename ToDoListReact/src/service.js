@@ -15,7 +15,7 @@ export default {
 
   addTask: async(name)=>{
     console.log('addTask', name)
-    //TODO
+    
     const result = await axios.post(`${apiUrl}/`, {name})
     return result;
     //return {}
