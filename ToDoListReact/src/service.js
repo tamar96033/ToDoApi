@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-const apiUrl = process.env.REACT_APP_API_URL
-console.log(apiUrl);
-
+console.log(process.env);
+// const apiUrl = process.env.REACT_APP_API_URL
+// console.log(apiUrl);
+const apiUrl = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = apiUrl; 
+console.log("API Base URL:", apiUrl);
 
 const service = {
   getTasks: async () => {
