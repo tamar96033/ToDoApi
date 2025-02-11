@@ -5,7 +5,7 @@ console.log(process.env.REACT_APP_API_URL)
 // const apiUrl = process.env.REACT_APP_API_URL
 /// console.log(apiUrl);
 //const apiUrl = process.env.REACT_APP_API_URL;
-const apiUrl = "https://todoapiserver-7pc6.onrender.com"
+const apiUrl = "https://todoapiserver-7pc6.onrender.com/items"
 axios.defaults.baseURL = apiUrl; 
 console.log("API Base URL:", apiUrl);
 
