@@ -55,6 +55,7 @@ app.MapPut("/items/{id}", async (int id, Item updatedItem, ToDoDbContext db) =>
 
 app.MapPost("/items", async (Item newItem, ToDoDbContext db) =>
 {
+    newItem.IsCompleted = false;
     await db.Items.AddAsync(newItem);
     await db.SaveChangesAsync();
     return Results.Ok(newItem);
