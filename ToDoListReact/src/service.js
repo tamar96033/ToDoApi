@@ -3,7 +3,7 @@ import axios from 'axios';
 console.log(process.env);
 console.log(process.env.REACT_APP_API_URL)
 // const apiUrl = process.env.REACT_APP_API_URL
-// console.log(apiUrl);
+/// console.log(apiUrl);
 const apiUrl = process.env.REACT_APP_API_URL;
 //const apiUrl = "https://todoapiserver-7pc6.onrender.com"
 axios.defaults.baseURL = apiUrl; 
