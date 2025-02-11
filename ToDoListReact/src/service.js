@@ -5,14 +5,14 @@ console.log(process.env.REACT_APP_API_URL)
 // const apiUrl = process.env.REACT_APP_API_URL
 /// console.log(apiUrl);
 //const apiUrl = process.env.REACT_APP_API_URL;
-const apiUrl = "https://todoapiserver-7pc6.onrender.com/items"
+const apiUrl = "https://todoapiserver-7pc6.onrender.com"
 axios.defaults.baseURL = apiUrl; 
 console.log("API Base URL:", apiUrl);
 
 const service = {
   getTasks: async () => {
     try{
-    const result = await axios.get(`${apiUrl}`)    
+    const result = await axios.get(`${apiUrl}/items`)    
     return result.data;}
     catch(error){
       console.error(error.message);
