@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/items`
 
-export default {
+const service= {
   getTasks: async () => {
     try{
     const result = await axios.get(`${apiUrl}`)    
@@ -36,4 +36,4 @@ export default {
   }
 };
 
-
+export default service
